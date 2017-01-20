@@ -184,7 +184,6 @@ class Electrum
         // ### Return Data converted to an array
         $response = json_decode($response, true);
 
-
         // ### Check if an error occured
         if(isset($response['error'])) {
 
@@ -196,6 +195,27 @@ class Electrum
         }
 
         return $response['result'];
+    }
+
+    /**
+     * Return the version of electrum.
+     *
+     * @return array|bool
+     */
+    public function GetVersion()
+    {
+        return $this->SendRequest('version');
+    }
+
+    /**
+     * Return wallet synchronization status
+     * @Todo: This thing is broken, not my fault.
+     *
+     * @return array|bool
+     */
+    public function isSynchronized()
+    {
+        return $this->SendRequest('is_synchronized');
     }
 
     /**
@@ -239,6 +259,19 @@ class Electrum
     public function GetAddressUnspent($address)
     {
         return $this->SendRequest('getaddressunspent', ['address' => $address]);
+    }
+
+    /**
+     * Check if address is in wallet. Return true if and only address is in wallet
+     * @Todo: This thing is broken, not my fault.
+     *
+     * @param $address
+     *
+     * @return array|bool
+     */
+    public function isAddressMine($address)
+    {
+        return $this->SendRequest('ismine', ['address' => $address]);
     }
 
     /**
@@ -433,6 +466,34 @@ class Electrum
     public function Freeze($address)
     {
         return $this->SendRequest('freeze', ['address' => $address]);
+    }
+
+    /**
+     * Return a configuration variable.
+     *
+     * @param $key      string  Config variable
+     *
+     * @return array|bool
+     */
+    public function GetConfig($key)
+    {
+        return $this->SendRequest('getconfig', ['key' => $key]);
+    }
+
+    /**
+     * Set a configuration variable. 'value' may be a string or a Python expression.
+     *
+     * @param $key      string  Config variable
+     * @param $value    string  Value
+     *
+     * @return array|bool
+     */
+    public function SetConfig($key, $value)
+    {
+        return $this->SendRequest('setconfig', [
+            'key'   => $key,
+            'value' => $value,
+        ]);
     }
 
 }
