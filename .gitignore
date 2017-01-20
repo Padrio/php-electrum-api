@@ -1,3 +1,5 @@
 /src/.idea
 /Vagrantfile
 /.vagrant
+
+/vendor/
