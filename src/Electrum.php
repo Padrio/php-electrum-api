@@ -24,12 +24,18 @@ class Electrum
     protected $id;
 
     /**
-     * Last occured curl error
+     * Last occurred error
      *
      * @var null
      */
     protected $lastError = null;
 
+    /**
+     * Electrum constructor.
+     * @param string $host
+     * @param int $port
+     * @param int $id
+     */
     public function __construct($host = 'http://127.0.0.1', $port = 7777, $id = 0)
     {
         $this->setHost($host);
@@ -131,9 +137,9 @@ class Electrum
      * @param       $method
      * @param array $params
      *
-     * @return bool|mixed
+     * @return bool|array
      */
-    public function PlainRequest($method, array $params = [])
+    public function SendRequest($method, array $params = [])
     {
         // ### Build request string
         $request = json_encode([
@@ -173,11 +179,23 @@ class Electrum
             // ### Return a false, so the user knows something went wrong
             return false;
 
-        } else {
-
-            // ### Return Data converted to an array
-            return json_decode($response, true);
         }
+
+        // ### Return Data converted to an array
+        $response = json_decode($response, true);
+
+
+        // ### Check if an error occured
+        if(isset($response['error'])) {
+
+            // ### Set message
+            $this->setLastError($response['error']['message']);
+
+            // ###
+            return false;
+        }
+
+        return $response['result'];
     }
 
     /**
@@ -187,7 +205,40 @@ class Electrum
      */
     public function GetBalance()
     {
-        return $this->PlainRequest('getbalance');
+        return $this->SendRequest('getbalance');
+    }
+
+    /**
+     * Return the balance of any address. Note: This is a walletless server query, esults are not checked by SPV.
+     *
+     * @param $address      string  Bitcoin address
+     * @return array|bool
+     */
+    public function GetAddressBalance($address)
+    {
+        return $this->SendRequest('getaddressbalance', ['address' => $address]);
+    }
+
+    /**
+     * Return the transaction history of any address. Note: This is a walletless server query, results are not checked by SPV.
+     *
+     * @param $address      string  Bitcoin Address
+     * @return array|bool
+     */
+    public function GetAddressHistory($address)
+    {
+        return $this->SendRequest('getaddresshistory', ['address' => $address]);
+    }
+
+    /**
+     * Returns the UTXO list of any address. Note: This is a walletless server query, results are not checked by SPV.
+     *
+     * @param $address      string  Bitcoin Address
+     * @return array|bool
+     */
+    public function GetAddressUnspent($address)
+    {
+        return $this->SendRequest('getaddressunspent', ['address' => $address]);
     }
 
     /**
@@ -197,7 +248,7 @@ class Electrum
      */
     public function GetHistory()
     {
-        return $this->PlainRequest('history');
+        return $this->SendRequest('history');
     }
 
     /**
@@ -221,7 +272,7 @@ class Electrum
             $params['expiration'] = $expiration;
         }
 
-        return $this->PlainRequest('addrequest', $params);
+        return $this->SendRequest('addrequest', $params);
     }
 
     /**
@@ -229,19 +280,159 @@ class Electrum
      *
      * @return bool|array
      */
-    public function getRequests()
+    public function GetRequests()
     {
-        return $this->PlainRequest('listrequests');
+        return $this->SendRequest('listrequests');
     }
 
     /**
      * Return a payment request
-     * @param $key          string  Variable name
+     * @param $address          string  Bitcoin Address
      *
      * @return bool|array
      */
-    public function GetRequest($key)
+    public function GetRequest($address)
     {
-        return $this->PlainRequest('getrequest', ['key' => $key]);
+        return $this->SendRequest('getrequest', ['key' => $address]);
     }
+
+    /**
+     * Remove a payment request
+     *
+     * @param $address      string  Bitcoin Address
+     * @return array|bool
+     */
+    public function RemoveRequest($address)
+    {
+        return $this->SendRequest('rmrequest', ['address' => $address]);
+    }
+
+    /**
+     * Remove all payment requests
+     *
+     * @return bool|array
+     */
+    public function ClearRequests()
+    {
+        return $this->SendRequest('clearrequests');
+    }
+
+    /**
+     * Sign payment request with an OpenAlias
+     *
+     * @param $address      string  Bitcoin Address
+     * @return array|bool
+     */
+    public function SignRequest($address)
+    {
+        return $this->SendRequest('signrequest', ['address' => $address]);
+    }
+
+    /**
+     * Broadcast a transaction to the network.
+     *
+     * @param $tx   string  Serialized transaction (hexadecimal)
+     * @return array|bool
+     */
+    public function Broadcast($tx)
+    {
+        return $this->SendRequest('broadcast', ['tx' => $tx]);
+    }
+
+    /**
+     * Create a transaction from json inputs. Inputs must have a redeemPubkey.
+     * Outputs must be a list of (address, value).
+     *
+     * @param $jsontx
+     * @return array|bool
+     */
+    public function Serialize($jsontx)
+    {
+        return $this->SendRequest('serialize', ['jsontx' => $jsontx]);
+    }
+
+    /**
+     * Deserialize a serialized transaction
+     *
+     * @param $tx string Serialized transaction (hexadecimal)
+     * @return array|bool
+     */
+    public function Deserialize($tx)
+    {
+        return $this->SendRequest('deserialize', ['tx' => $tx]);
+    }
+
+    /**
+     * Encrypt a message with a public key. Use quotes if the message contains whitespaces.
+     *
+     * @param $pubkey   string  Public key
+     * @param $message  string  Clear text message. Use quotes if it contains spaces.
+     *
+     * @return array|bool
+     */
+    public function Encrypt($pubkey, $message)
+    {
+        return $this->SendRequest('encrypt', [
+            'pubkey'    => $pubkey,
+            'message'   => $message,
+        ]);
+    }
+
+    /**
+     * Decrypt a message encrypted with a public key.
+     *
+     * @param $pubkey       string  Public key
+     * @param $encrypted    string  Encrypted message
+     * @return array|bool
+     */
+    public function Decrypt($pubkey, $encrypted)
+    {
+        return $this->SendRequest('decrypt', [
+            'pubkey'    => $pubkey,
+            'encrypted' => $encrypted,
+        ]);
+    }
+
+    /**
+     * Check that a seed was generated with given entropy.
+     *
+     * @param $seed string  Seed phrase
+     * @return array|bool
+     */
+    public function CheckSeed($seed)
+    {
+        return $this->SendRequest('check_seed', ['seed' => $seed]);
+    }
+
+    /**
+     * Create a seed
+     *
+     * @return array|bool
+     */
+    public function CreateSeed()
+    {
+        return $this->SendRequest('make_seed');
+    }
+
+    /**
+     * Get seed phrase. Print the generation seed of your wallet.
+     *
+     * @return array|bool
+     */
+    public function GetSeed()
+    {
+        return $this->SendRequest('getseed');
+    }
+
+    /**
+     * Freeze address. Freeze the funds at one of your wallet's addresses
+     *
+     * @param $address      string  Bitcoin address
+     * @return array|bool
+     */
+    public function Freeze($address)
+    {
+        return $this->SendRequest('freeze', ['address' => $address]);
+    }
+
 }
