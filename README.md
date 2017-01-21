@@ -1,4 +1,4 @@
-# php-electrum-api - Lightweight Electrum libarary with zero dependencies 
+# php-electrum-api - Electrum libarary with no dependencies 
 ```
 Licence: GPL-3.0
 Author: Pascal Krason <p.krason@padr.io>
@@ -24,7 +24,7 @@ electrum daemon start
 On the PHP side there are not much requirements, you only need atleast PHP 5.6 and the curl-Extension installed. Optional you need [Composer](http://getcomposer.org) to install this library. 
 
 # Install
-First you need to install (Composer)[https://getcomposer.org/doc/00-intro.md], after you accomplished this you can go ahead:
+First you need to install [Composer](https://getcomposer.org/doc/00-intro.md), after you accomplished this you can go ahead:
 ```
 composer require padrio/php-electrum-api
 ```
