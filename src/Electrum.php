@@ -1,11 +1,13 @@
 <?php
 
+namespace Electrum;
+
 /**
  * Created using PHPStorm
  * User: Pascal Krason <p.krason@padr.io>
  * Date: 18.01.2017
  */
-class Electrum
+class Client
 {
 
     /**
