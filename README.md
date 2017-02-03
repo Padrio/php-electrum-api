@@ -34,6 +34,6 @@ Then you can simply include the autoloader and begin using the library:
 require_once 'vendor/autoloader.php';
 
 // Create new instance
-$electrum = new Padrio\Electrum('http://127.0.0.1/', 7777);
+$electrum = new \Electrum\Client('http://127.0.0.1/', 7777);
 $electrum->getVersion();
 ```
