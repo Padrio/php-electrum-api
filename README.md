@@ -9,7 +9,7 @@ Please note, this library is by far not completed and production ready, there ar
 # Setting up Electrum
 First you need to setup a new Electrum wallet. Follow the instructions according to your OS at the [Electrum Download Page](https://electrum.org/#download). After the successfull installation you need to set a rpcport by typing:
 ```
-electrum setconfig rpcport 777
+electrum setconfig rpcport 7777
 ``` 
 Then we can create a default wallet, dont forget to note your generated seed, it's nescessary if you want to recover it one day:
 ```
