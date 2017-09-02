@@ -32,8 +32,56 @@ Then you can simply include the autoloader and begin using the library:
 ```php
 // Include composer autoloader
 require_once 'vendor/autoloader.php';
+```
 
-// Create new instance
-$electrum = new \Electrum\Client('http://127.0.0.1/', 7777);
-$electrum->getVersion();
+# Examples
+
+## Basic example
+A very basic useage example. Every API-Call has it's own request-object. You simply create one and execute it.
+```php
+
+$method = new \Electrum\Request\Method\Version();
+
+try {
+    $response = $method->execute();
+} catch(\Exception $exception) {
+    die($exception->getMessage());
+}
+
+$response->getVersion();
+```
+
+## Custom Client Configuration
+Every Request/Method takes a `Electrum\Client`-instance as parameter which replaces the default one. A custom instance can be usefull if you want to set custom config params like another Hostname or Port.
+```php
+$client = new \Electrum\Client('http://127.0.0.1', 7777);
+$method = new \Electrum\Request\Method\Version($client);
+
+try {
+    $response = $method->execute();
+} catch (Exception $exception) {
+    die($exception->getMessage());
+}
+
+$response->getVersion();
+```
+
+## Advanced exception handling
+Dealing with exceptions is easy. You can catch two types of exceptions which indicates whether it's an Request or Response fault.
+```php
+$method = new \Electrum\Request\Method\Version();
+
+try {
+    $response = $method->execute();
+} catch (\Electrum\Request\Exception\BadRequestException $exception) {
+    die(sprintf(
+        'Failed to send request: %s',
+        $exception->getMessage()
+    ));
+} catch(\Electrum\Response\Exception\ElectrumResponseException $exception) {
+    die(sprintf(
+        'Electrum-Client failed to respond correctly: %s',
+        $exception->getMessage()
+    ));
+}
 ```
