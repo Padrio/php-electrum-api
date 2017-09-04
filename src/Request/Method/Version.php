@@ -19,10 +19,14 @@ class Version extends AbstractMethod implements MethodInterface
 
     /**
      * @return VersionResponse
+     *
+     * @throws \Electrum\Request\Exception\BadRequestException
+     * @throws \Electrum\Response\Exception\ElectrumResponseException
      */
     public function execute()
     {
-        $data = $this->getClient()->execute($this->method, []);
-        return VersionResponse::createFromArray($data);
+        $version = $this->getClient()->execute($this->method, []);
+
+        return VersionResponse::createFromArray(['version' => $version]);
     }
 }
