@@ -32,6 +32,8 @@ abstract class AbstractMethod
     {
         if($client instanceof Client) {
             $this->setClient($client);
+        } else {
+            $this->setClient(new Client());
         }
     }
 
