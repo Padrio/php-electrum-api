@@ -1,5 +1,9 @@
-/src/.idea
-/Vagrantfile
-/.vagrant
-
+# Composer
 /vendor/
+
+# IDE
+/.idea
+
+# For testing purposes
+example.php
+test.php
