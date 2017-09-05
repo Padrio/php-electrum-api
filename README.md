@@ -59,7 +59,7 @@ $method = new \Electrum\Request\Method\Version($client);
 
 try {
     $response = $method->execute();
-} catch (Exception $exception) {
+} catch (\Exception $exception) {
     die($exception->getMessage());
 }
 
