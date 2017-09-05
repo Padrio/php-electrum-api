@@ -4,28 +4,29 @@ namespace Electrum\Request\Method;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Version as VersionResponse;
+use Electrum\Response\Balance as BalanceResponse;
 
 /**
  * @author Pascal Krason <pascal.krason@padr.io>
  */
-class Version extends AbstractMethod implements MethodInterface
+class GetBalance extends AbstractMethod implements MethodInterface
 {
 
     /**
      * @var string
      */
-    private $method = 'version';
+    private $method = 'getbalance';
 
     /**
-     * @return VersionResponse
+     * @param array $optional
      *
+     * @return BalanceResponse
      * @throws \Electrum\Request\Exception\BadRequestException
      * @throws \Electrum\Response\Exception\ElectrumResponseException
      */
     public function execute(array $optional = [])
     {
         $data = $this->getClient()->execute($this->method, $optional);
-        return $this->hydrate(new VersionResponse(), $data);
+        return $this->hydrate(new BalanceResponse(), $data);
     }
 }

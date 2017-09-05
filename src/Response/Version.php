@@ -14,20 +14,6 @@ class Version implements ResponseInterface
     protected $version = '';
 
     /**
-     * Factory method
-     *
-     * @param array $data
-     *
-     * @return Version
-     */
-    public static function createFromArray(array $data)
-    {
-        $instance = new self;
-        $instance->setVersion($data['version']);
-        return $instance;
-    }
-
-    /**
      * @return string
      */
     public function getVersion()

@@ -3,6 +3,8 @@
 namespace Electrum\Request;
 
 use Electrum\Client;
+use Electrum\Response\ResponseInterface;
+use Zend\Hydrator\Reflection as ReflectionHydrator;
 
 /**
  * @author Pascal Krason <pascal.krason@padr.io>
@@ -35,6 +37,24 @@ abstract class AbstractMethod
         } else {
             $this->setClient(new Client());
         }
+    }
+
+    /**
+     * Hydrate returned api data into our custom response models
+     *
+     * @param ResponseInterface $object
+     * @param array             $data
+     *
+     * @return ResponseInterface
+     */
+    public function hydrate(ResponseInterface $object, array $data)
+    {
+        $hydrator = new ReflectionHydrator();
+
+        return $hydrator->hydrate(
+            $data,
+            $object
+        );
     }
 
     /**
