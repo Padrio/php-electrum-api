@@ -1,5 +1,6 @@
 # Composer
 /vendor/
+composer.lock
 
 # IDE
 /.idea
@@ -7,3 +8,6 @@
 # For testing purposes
 example.php
 test.php
+
+# Thanks macOS
+.DS_Store
