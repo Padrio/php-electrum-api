@@ -4,9 +4,10 @@ namespace Electrum\Request\Method;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Balance as BalanceResponse;
+use Electrum\Response\Wallet\Balance as BalanceResponse;
 
 /**
+ * Return the balance of your wallet
  * @author Pascal Krason <pascal.krason@padr.io>
  */
 class GetBalance extends AbstractMethod implements MethodInterface

@@ -1,13 +1,13 @@
 <?php
 
-namespace Electrum\Response;
+namespace Electrum\Response\Traits;
 
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * Trait Balance
+ * @package Electrum\Response\Traits
  */
-class Balance implements ResponseInterface
+trait Balance
 {
-
     /**
      * @var float
      */
