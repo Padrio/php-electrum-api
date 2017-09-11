@@ -4,8 +4,6 @@ namespace Electrum\Request\Method\Payment;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Hydrator\Payment\PaymentRequest as PaymentRequestHydrator;
-use Electrum\Response\Payment\Amount;
 use Electrum\Response\Payment\PaymentRequest as PaymentRequestResponse;
 use Electrum\Response\Payment\PaymentRequest;
 
@@ -173,31 +171,6 @@ class AddRequest extends AbstractMethod implements MethodInterface
             return null;
         }
 
-        return $this->createPaymentFromData($data);
-    }
-
-    /**
-     * @param array $data
-     *
-     * @return PaymentRequestResponse
-     */
-    private function createPaymentFromData(array $data)
-    {
-        /** @var PaymentRequestResponse $paymentRequestResponse */
-        $paymentRequestResponse = null;
-
-        $amountHydrator = new \Electrum\Response\Hydrator\Payment\Amount();
-        $amount = $amountHydrator->hydrate($data, new Amount());
-
-        $paymentRequestHydrator = new PaymentRequestHydrator();
-        $paymentRequestResponse = $paymentRequestHydrator->hydrate(
-            array_merge(
-                $data, [
-                    'amount' => $amount
-                ]),
-            new PaymentRequestResponse()
-        );
-
-        return $paymentRequestResponse;
+        return PaymentRequest::createFromArray($data);
     }
 }

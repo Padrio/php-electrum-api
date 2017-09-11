@@ -3,6 +3,7 @@
 namespace Electrum\Response\Payment;
 
 use Electrum\Response\ResponseInterface;
+use Electrum\Response\Hydrator\Payment\PaymentRequest as PaymentRequestHydrator;
 
 /**
  * @author Pascal Krason <pascal.krason@padr.io>
@@ -69,6 +70,33 @@ class PaymentRequest implements ResponseInterface
      * @var int
      */
     private $time = 0;
+
+    /**
+     * Factory method
+     *
+     * @param array $data
+     *
+     * @return PaymentRequest
+     */
+    public static function createFromArray(array $data)
+    {
+        /** @var PaymentRequest $paymentRequest */
+        $paymentRequestResponse = null;
+
+        $amountHydrator = new \Electrum\Response\Hydrator\Payment\Amount();
+        $amount = $amountHydrator->hydrate($data, new Amount());
+
+        $paymentRequestHydrator = new PaymentRequestHydrator();
+        $paymentRequestResponse = $paymentRequestHydrator->hydrate(
+            array_merge(
+                $data, [
+                'amount' => $amount
+            ]),
+            new self
+        );
+
+        return $paymentRequestResponse;
+    }
 
     /**
      * @return string
