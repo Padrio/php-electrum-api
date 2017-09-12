@@ -4,7 +4,7 @@ namespace Electrum\Request\Method\Address;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Address\History as HistoryResponse;
+use Electrum\Response\Model\Address\History as HistoryResponse;
 
 /**
  * Return the transaction history of any address.

@@ -4,7 +4,7 @@ namespace Electrum\Request\Method\Address;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Address\Balance as BalanceResponse;
+use Electrum\Response\Model\Address\Balance as BalanceResponse;
 
 /**
  * Return the balance of any address.

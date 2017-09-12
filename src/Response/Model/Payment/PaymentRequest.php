@@ -1,6 +1,6 @@
 <?php
 
-namespace Electrum\Response\Payment;
+namespace Electrum\Response\Model\Payment;
 
 use Electrum\Response\ResponseInterface;
 use Electrum\Response\Hydrator\Payment\PaymentRequest as PaymentRequestHydrator;

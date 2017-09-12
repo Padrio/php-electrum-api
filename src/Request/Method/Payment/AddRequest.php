@@ -4,8 +4,8 @@ namespace Electrum\Request\Method\Payment;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Payment\PaymentRequest as PaymentRequestResponse;
-use Electrum\Response\Payment\PaymentRequest;
+use Electrum\Response\Model\Payment\PaymentRequest as PaymentRequestResponse;
+use Electrum\Response\Model\Payment\PaymentRequest;
 
 /**
  * Create a payment request.

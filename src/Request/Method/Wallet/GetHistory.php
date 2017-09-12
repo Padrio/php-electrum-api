@@ -4,11 +4,11 @@ namespace Electrum\Request\Method;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Wallet\History as HistoryResponse;
+use Electrum\Response\Model\Wallet\History as HistoryResponse;
 
 /**
  * Wallet history. Returns the transaction history of your wallet.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class GetHistory extends AbstractMethod implements MethodInterface
 {

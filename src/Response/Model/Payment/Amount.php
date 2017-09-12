@@ -1,6 +1,6 @@
 <?php
 
-namespace Electrum\Response\Payment;
+namespace Electrum\Response\Model\Payment;
 
 /**
  * @author Pascal Krason <pascal.krason@check24.de>

@@ -4,7 +4,7 @@ namespace Electrum\Request\Method;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Version as VersionResponse;
+use Electrum\Response\Model\Version as VersionResponse;
 
 /**
  * @author Pascal Krason <pascal.krason@padr.io>

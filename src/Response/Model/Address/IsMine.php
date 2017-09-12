@@ -1,6 +1,6 @@
 <?php
 
-namespace Electrum\Response\Address;
+namespace Electrum\Response\Model\Address;
 
 /**
  * @author Pascal Krason <pascal.krason@check24.de>

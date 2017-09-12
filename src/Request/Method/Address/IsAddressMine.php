@@ -4,7 +4,7 @@ namespace Electrum\Request\Method;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Address\IsMine as IsMineResponse;
+use Electrum\Response\Model\Address\IsMine as IsMineResponse;
 
 /**
  * Check if address is in wallet. Return true if and only address is in wallet

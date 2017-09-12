@@ -4,7 +4,7 @@ namespace Electrum\Request\Method;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Wallet\Balance as BalanceResponse;
+use Electrum\Response\Model\Wallet\Balance as BalanceResponse;
 
 /**
  * Return the balance of your wallet

@@ -1,6 +1,6 @@
 <?php
 
-namespace Electrum\Response\Address;
+namespace Electrum\Response\Model\Address;
 
 use Electrum\Response\ResponseInterface;
 use Electrum\Response\Traits\Balance;

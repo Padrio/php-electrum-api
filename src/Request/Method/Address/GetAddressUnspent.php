@@ -4,7 +4,7 @@ namespace Electrum\Request\Method\Address;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Address\Unspent as UnspentResponse;
+use Electrum\Response\Model\Address\Unspent as UnspentResponse;
 
 /**
  * Returns the UTXO list of any address.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Electrum\Response;
+namespace Electrum\Response\Model;
 
 /**
  * @author Pascal Krason <pascal.krason@padr.io>
