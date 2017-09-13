@@ -8,7 +8,7 @@ use Zend\Hydrator\Reflection as ReflectionHydrator;
 use Zend\Hydrator\Reflection;
 
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 abstract class AbstractMethod
 {

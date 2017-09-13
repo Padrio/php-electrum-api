@@ -2,8 +2,10 @@
 
 namespace Electrum\Response\Model;
 
+use Electrum\Response\ResponseInterface;
+
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class Version implements ResponseInterface
 {

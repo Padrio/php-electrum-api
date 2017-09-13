@@ -6,7 +6,7 @@ use Exception;
 use Throwable;
 
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class ElectrumResponseException extends Exception
 {

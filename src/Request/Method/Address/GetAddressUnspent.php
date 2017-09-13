@@ -9,7 +9,7 @@ use Electrum\Response\Model\Address\Unspent as UnspentResponse;
 /**
  * Returns the UTXO list of any address.
  * Note: This is a walletless server query, results are not checked by SPV.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class GetAddressUnspent extends AbstractMethod implements MethodInterface
 {

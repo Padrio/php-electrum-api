@@ -8,7 +8,7 @@ use Electrum\Response\Model\Wallet\Balance as BalanceResponse;
 
 /**
  * Return the balance of your wallet
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class GetBalance extends AbstractMethod implements MethodInterface
 {

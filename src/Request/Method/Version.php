@@ -7,7 +7,7 @@ use Electrum\Request\MethodInterface;
 use Electrum\Response\Model\Version as VersionResponse;
 
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class Version extends AbstractMethod implements MethodInterface
 {

@@ -8,7 +8,7 @@ use Electrum\Response\Model\Address\IsMine as IsMineResponse;
 
 /**
  * Check if address is in wallet. Return true if and only address is in wallet
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class IsAddressMine extends AbstractMethod implements MethodInterface
 {

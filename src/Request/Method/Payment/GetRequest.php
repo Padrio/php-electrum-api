@@ -11,7 +11,7 @@ use Electrum\Response\Model\Payment\PaymentRequest;
 
 /**
  * Return a payment request.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class GetRequest extends AbstractMethod implements MethodInterface
 {

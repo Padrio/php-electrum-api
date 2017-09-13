@@ -6,7 +6,7 @@ use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
 use Zend\Hydrator\Reflection;
 
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class Amount extends Reflection
 {

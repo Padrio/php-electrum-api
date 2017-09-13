@@ -9,7 +9,7 @@ use Electrum\Response\Model\Payment\PaymentRequest;
 
 /**
  * Create a payment request.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class AddRequest extends AbstractMethod implements MethodInterface
 {

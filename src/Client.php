@@ -6,7 +6,7 @@ use Electrum\Request\Exception\BadRequestException;
 use Electrum\Response\Exception\ElectrumResponseException;
 
 /**
- * @author Pascal Krason <pascal.krason@padar.io>
+ * @author Pascal Krason <p.krason@padar.io>
  */
 class Client
 {

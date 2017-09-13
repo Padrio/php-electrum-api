@@ -2,8 +2,10 @@
 
 namespace Electrum\Response\Model\Address;
 
+use Electrum\Response\ResponseInterface;
+
 /**
- * @author Pascal Krason <pascal.krason@check24.de>
+ * @author Pascal Krason <p.krason@check24.de>
  */
 class IsMine implements ResponseInterface
 {

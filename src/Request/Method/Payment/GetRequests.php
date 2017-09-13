@@ -9,7 +9,7 @@ use Electrum\Response\Model\Payment\PaymentRequest;
 
 /**
  * List the payment requests you made.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class GetRequests extends AbstractMethod implements MethodInterface
 {

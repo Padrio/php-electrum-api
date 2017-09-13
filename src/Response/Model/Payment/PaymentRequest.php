@@ -6,7 +6,7 @@ use Electrum\Response\ResponseInterface;
 use Electrum\Response\Hydrator\Payment\PaymentRequest as PaymentRequestHydrator;
 
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class PaymentRequest implements ResponseInterface
 {

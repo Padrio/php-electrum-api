@@ -9,7 +9,7 @@ use Electrum\Response\Model\Address\History as HistoryResponse;
 /**
  * Return the transaction history of any address.
  * Note: This is a walletless server query, results are not checked by SPV.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class GetAddressHistory extends AbstractMethod implements MethodInterface
 {

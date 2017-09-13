@@ -9,7 +9,7 @@ use Electrum\Response\Model\Address\Balance as BalanceResponse;
 /**
  * Return the balance of any address.
  * Note: This is a walletless server query, esults are not checked by SPV.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class GetAddressBalance extends AbstractMethod implements MethodInterface
 {

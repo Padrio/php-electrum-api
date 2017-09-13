@@ -3,7 +3,7 @@
 namespace Electrum\Response\Model\Payment;
 
 /**
- * @author Pascal Krason <pascal.krason@check24.de>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class Amount
 {

@@ -5,7 +5,7 @@ namespace Electrum\Response\Model\Address;
 use Electrum\Response\ResponseInterface;
 
 /**
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class Unspent implements ResponseInterface
 {

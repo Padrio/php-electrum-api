@@ -8,7 +8,7 @@ use Electrum\Request\MethodInterface;
 
 /**
  * Remove a payment request.
- * @author Pascal Krason <pascal.krason@padr.io>
+ * @author Pascal Krason <p.krason@padr.io>
  */
 class RemoveRequest extends AbstractMethod implements MethodInterface
 {
