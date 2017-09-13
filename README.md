@@ -2,7 +2,7 @@
 ```
 Licence: GPL-3.0
 Author: Pascal Krason <p.krason@padr.io>
-Language: PHP 5.6
+Language: PHP 5.6-7.1
 ```
 Please note, this library is by far not completed and production ready, there are still a lot methods which aren't neither tested or even implemented.
 
