@@ -1,4 +1,4 @@
-# php-electrum-api - Electrum library with no dependencies 
+# php-electrum-api - Electrum library
 ```
 Licence: GPL-3.0
 Author: Pascal Krason <p.krason@padr.io>
