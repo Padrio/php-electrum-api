@@ -4,7 +4,7 @@ Licence: GPL-3.0
 Author: Pascal Krason <p.krason@padr.io>
 Language: PHP 5.6-7.1
 ```
-Please note, this library is by far not completed and production ready, there are still a lot methods which aren't neither tested or even implemented.
+Please note, this library is by far not completed and but can be used in production. Until now i only implemented the most commonly used API-Calls. If you think im missing something, just create an issue or fork the project.
 
 # Setting up Electrum
 First you need to setup a new Electrum wallet. Follow the instructions according to your OS at the [Electrum Download Page](https://electrum.org/#download). After the successfull installation you need to set a rpcport by typing:
