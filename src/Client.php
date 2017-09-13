@@ -62,7 +62,7 @@ class Client
         if(isset($response['error'])) {
 
             // ### Set message
-            throw new ElectrumResponseException($response);
+            throw ElectrumResponseException::createFromElectrumResponse($response);
         }
 
         return $response['result'];

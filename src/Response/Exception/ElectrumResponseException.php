@@ -10,31 +10,29 @@ use Throwable;
  */
 class ElectrumResponseException extends Exception
 {
-
     /**
-     * Extract electrum error from response if given
+     * Extract electrum error from response
      *
-     * @param string         $message
-     * @param int            $code
-     * @param Throwable|null $previous
+     * @param array $response
+     *
+     * @return ElectrumResponseException
      */
-    public function __construct($message = "", $code = 0, Throwable $previous = null)
+    public static function createFromElectrumResponse(array $response)
     {
-        if (is_array($message)) {
+        $message = '';
+        $code = 0;
 
-            if(isset($message['error']['message'])) {
-                $message = vsprintf(
-                    'Electrum API returned error: `%s`',
-                    $message['error']['message']
-                );
-            }
-
-            if(isset($message['error']['code'])) {
-                $code = $message['error']['code'];
-            }
-
+        if (isset($response['error']['message'])) {
+            $message = vsprintf(
+                'Electrum API returned error: `%s`',
+                $response['error']['message']
+            );
         }
 
-        parent::__construct($message, $code, $previous);
+        if (isset($response['error']['code'])) {
+            $code = $response['error']['code'];
+        }
+
+        return new self($message, $code);
     }
 }
