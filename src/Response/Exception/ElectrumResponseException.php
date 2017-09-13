@@ -20,11 +20,19 @@ class ElectrumResponseException extends Exception
      */
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {
-        if (is_array($message) && isset($message['error']['message'])) {
-            $message = vsprintf(
-                'Electrum API returned error: `%s`',
-                $message['error']['message']
-            );
+        if (is_array($message)) {
+
+            if(isset($message['error']['message'])) {
+                $message = vsprintf(
+                    'Electrum API returned error: `%s`',
+                    $message['error']['message']
+                );
+            }
+
+            if(isset($message['error']['code'])) {
+                $code = $message['error']['code'];
+            }
+
         }
 
         parent::__construct($message, $code, $previous);
