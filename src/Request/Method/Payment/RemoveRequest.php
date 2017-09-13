@@ -3,9 +3,8 @@
 namespace Electrum\Request\Method\Payment;
 
 use Electrum\Request\AbstractMethod;
+use Electrum\Request\Method\Traits\Param\Address;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Model\Payment\PaymentRequest;
-use InvalidArgumentException;
 
 /**
  * Remove a payment request.
@@ -14,46 +13,13 @@ use InvalidArgumentException;
 class RemoveRequest extends AbstractMethod implements MethodInterface
 {
 
+    use Address;
+
     /**
      * @var string
      */
     private $method = 'rmrequest';
 
-    /**
-     * @var string
-     */
-    private $address = null;
-
-    /**
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param string $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @param PaymentRequest $request
-     */
-    public function setPaymentRequest(PaymentRequest $request)
-    {
-        if(empty($request->getAddress())) {
-            throw new InvalidArgumentException(sprintf(
-                '$request does not contain valid address, %s given',
-                $request->getAddress()
-            ));
-        }
-
-        $this->address = $request->getAddress();
-    }
 
     /**
      * @param array $optional
