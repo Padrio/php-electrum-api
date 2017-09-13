@@ -19,9 +19,13 @@ Now we can go ahead and start Electrum in daemon mode:
 ```
 electrum daemon start
 ```
+Since some new version electrum wants you to load your wallet by hand on startup:
+```
+electrum daemon load_wallet
+```
 
 # Requirements
-On the PHP side there are not much requirements, you only need atleast PHP 5.6 and the curl-Extension installed. Optional you need [Composer](http://getcomposer.org) to install this library. 
+On the PHP side there are not much requirements, you only need at least PHP 5.6 and the curl-Extension installed. Then you can go ahead ans it through [Composer](http://getcomposer.org) which will do everything else for you.
 
 # Install
 First you need to install [Composer](https://getcomposer.org/doc/00-intro.md), after you accomplished this you can go ahead:
