@@ -37,7 +37,7 @@ class Transaction implements ResponseInterface
     /**
      * @var string
      */
-    private $txId;
+    private $txid;
 
     /**
      * @var string
@@ -107,7 +107,7 @@ class Transaction implements ResponseInterface
      */
     public function getTxId()
     {
-        return $this->txId;
+        return $this->txid;
     }
 
     /**
