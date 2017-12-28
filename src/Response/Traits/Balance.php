@@ -57,4 +57,12 @@ trait Balance
 
         return $this;
     }
+
+    /**
+     * @return float
+     */
+    public function getTotal()
+    {
+        return $this->confirmed + $this->unconfirmed;
+    }
 }
