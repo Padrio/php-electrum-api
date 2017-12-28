@@ -1,6 +1,6 @@
 <?php
 
-namespace Electrum\Request\Method;
+namespace Electrum\Request\Method\Wallet;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;

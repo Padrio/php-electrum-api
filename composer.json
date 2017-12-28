@@ -1,5 +1,5 @@
 {
-    "name": "padrio/php-electrum-api",
+    "name": "zorn-v/php-electrum-api",
     "description": "PHP wrapper for Electrum JSONRPC-API",
     "type": "library",
 	"keywords": ["electrum", "bitcoin", "payment", "jsonrpc", "api"],
