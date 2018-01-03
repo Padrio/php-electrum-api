@@ -1,10 +1,10 @@
 <?php
 
-namespace Electrum\Request\Method;
+namespace Electrum\Request\Method\Wallet;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Model\Wallet\History as HistoryResponse;
+use Electrum\Response\Model\Wallet\Transaction;
 
 /**
  * Wallet history. Returns the transaction history of your wallet.
@@ -28,6 +28,10 @@ class GetHistory extends AbstractMethod implements MethodInterface
     public function execute(array $optional = [])
     {
         $data = $this->getClient()->execute($this->method, $optional);
-        return $this->hydrate(new HistoryResponse(), $data);
+        $transactions = [];
+        foreach ($data as $transaction) {
+            $transactions[] = $this->hydrate(new Transaction(), $transaction);
+        }
+        return $transactions;
     }
 }
