@@ -72,6 +72,11 @@ class PaymentRequest implements ResponseInterface
     private $time = 0;
 
     /**
+     * @var int
+     */
+    private $confirmations = null;
+
+    /**
      * Factory method
      *
      * @param array $data
@@ -242,6 +247,26 @@ class PaymentRequest implements ResponseInterface
     public function setTime($time)
     {
         $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getConfirmations()
+    {
+        return $this->confirmations;
+    }
+
+    /**
+     * @param int $confirmations
+     *
+     * @return PaymentRequest
+     */
+    public function setConfirmations($confirmations)
+    {
+        $this->confirmations = $confirmations;
 
         return $this;
     }

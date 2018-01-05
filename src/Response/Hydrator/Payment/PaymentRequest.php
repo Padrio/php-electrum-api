@@ -23,6 +23,7 @@ class PaymentRequest extends Reflection
             'URI' => 'uri',
             'exp' => 'expires',
             'time' => 'time',
+            'confirmations' => 'confirmations',
         ]);
 
         $this->setNamingStrategy($namingStrategy);
