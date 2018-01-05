@@ -2,21 +2,20 @@
 
 namespace Electrum\Response\Exception;
 
+use Electrum\Request\Exception\BadRequestException;
 use Exception;
-use Throwable;
 
 /**
  * @author Pascal Krason <p.krason@padr.io>
- * @deprecated Use \Electrum\Response\Exception\BadResponseException instead
  */
-class ElectrumResponseException extends Exception
+class BadResponseException extends Exception
 {
     /**
      * Extract electrum error from response
      *
      * @param array $response
      *
-     * @return ElectrumResponseException
+     * @return BadRequestException
      */
     public static function createFromElectrumResponse(array $response)
     {

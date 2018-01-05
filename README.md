@@ -82,7 +82,7 @@ try {
         'Failed to send request: %s',
         $exception->getMessage()
     ));
-} catch(\Electrum\Response\Exception\ElectrumResponseException $exception) {
+} catch(\Electrum\Response\Exception\BadResponseException $exception) {
     die(sprintf(
         'Electrum-Client failed to respond correctly: %s',
         $exception->getMessage()
