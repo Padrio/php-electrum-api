@@ -1,5 +1,5 @@
 {
-    "name": "epoxa/php-electrum-api",
+    "name": "padrio/php-electrum-api",
     "description": "PHP wrapper for Electrum JSONRPC-API",
     "type": "library",
 	"keywords": ["electrum", "bitcoin", "payment", "jsonrpc", "api"],

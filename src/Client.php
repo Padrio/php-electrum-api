@@ -23,6 +23,18 @@ class Client
     private $port = 0;
 
     /**
+     * JSONRPC User Name
+     * @var string
+     */
+    private $user = '';
+
+    /**
+     * JSONRPC Password
+     * @var string
+     */
+    private $pass = '';
+
+    /**
      * Last Message-ID
      * @var int
      */
@@ -32,11 +44,20 @@ class Client
      * @param string $host
      * @param int    $port
      * @param int    $id
+     * @param string $user
+     * @param string $password
      */
-    public function __construct($host = 'http://127.0.0.1', $port = 7777, $id = 0)
-    {
+    public function __construct(
+        $host = 'http://127.0.0.1',
+        $port = 7777,
+        $id = 0,
+        $user = null,
+        $password = null
+    ) {
         $this->setHost($host);
         $this->setPort($port);
+        $this->setUserName($user);
+        $this->setPassword($password);
         $this->setId($id);
     }
 
@@ -110,6 +131,13 @@ class Client
             CURLOPT_POST           => true,
             CURLOPT_POSTFIELDS     => $request,
         ]);
+
+        // Authorization
+        if ($this->user || $this->pass) {
+            curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($curl, CURLOPT_USERPWD, $this->user . ":" . $this->pass);
+        }
+
         // Execute request & convert data to array
         $response = curl_exec($curl);
 
@@ -163,6 +191,48 @@ class Client
     public function setPort($port)
     {
         $this->port = $port;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserName()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return Request
+     *
+     */
+    public function setUserName($value)
+    {
+        $this->user = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->pass;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return Request
+     *
+     */
+    public function setPassword($value)
+    {
+        $this->pass = $value;
 
         return $this;
     }
