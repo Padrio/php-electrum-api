@@ -10,8 +10,8 @@ Please note, this library is by far not completed and but can be used in product
 First you need to setup a new Electrum wallet. Follow the instructions according to your OS at the [Electrum Download Page](https://electrum.org/#download). After the successfull installation you need to set a rpcport by typing:
 ```
 electrum setconfig rpcport 7777
-electrum setconfig rpcuser "RPC_USER_NAME"
-electrum setconfig rpcpassword "VERY_SECRET_NOT_STARTED_WITH_DIGIT"
+electrum setconfig rpcuser "username"
+electrum setconfig rpcpassword "password"
 ```
 Then we can create a default wallet, dont forget to note your generated seed, it's nescessary if you want to recover it one day:
 ```
@@ -60,7 +60,7 @@ $response->getVersion();
 ## Custom Client Configuration
 Every Request/Method takes a `Electrum\Client`-instance as parameter which replaces the default one. A custom instance can be usefull if you want to set custom config params like another Hostname or Port.
 ```php
-$client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'RPC_USER_NAME', 'VERY_SECRET_NOT_STARTED_WITH_DIGIT');
+$client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'username', 'password');
 $method = new \Electrum\Request\Method\Version($client);
 
 try {
