@@ -26,13 +26,13 @@ class Client
      * JSONRPC User Name
      * @var string
      */
-    private $user = '';
+    private $username = null;
 
     /**
      * JSONRPC Password
      * @var string
      */
-    private $pass = '';
+    private $password = null;
 
     /**
      * Last Message-ID
@@ -44,21 +44,21 @@ class Client
      * @param string $host
      * @param int    $port
      * @param int    $id
-     * @param string $user
+     * @param string $username
      * @param string $password
      */
     public function __construct(
         $host = 'http://127.0.0.1',
         $port = 7777,
         $id = 0,
-        $user = null,
+        $username = null,
         $password = null
     ) {
         $this->setHost($host);
         $this->setPort($port);
-        $this->setUserName($user);
-        $this->setPassword($password);
         $this->setId($id);
+        $this->setUsername($username);
+        $this->setPassword($password);
     }
 
     /**
@@ -133,9 +133,9 @@ class Client
         ]);
 
         // Authorization
-        if ($this->user || $this->pass) {
+        if ($this->getUsername() && $this->getPassword()) {
             curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-            curl_setopt($curl, CURLOPT_USERPWD, $this->user . ":" . $this->pass);
+            curl_setopt($curl, CURLOPT_USERPWD, $this->getUsername() . ":" . $this->getPassword());
         }
 
         // Execute request & convert data to array
@@ -166,7 +166,7 @@ class Client
     /**
      * @param string $host
      *
-     * @return Request
+     * @return Client
      */
     public function setHost($host)
     {
@@ -186,7 +186,7 @@ class Client
     /**
      * @param int $port
      *
-     * @return Request
+     * @return Client
      */
     public function setPort($port)
     {
@@ -198,20 +198,19 @@ class Client
     /**
      * @return string
      */
-    public function getUserName()
+    public function getUsername()
     {
-        return $this->user;
+        return $this->username;
     }
 
     /**
-     * @param $value
+     * @param string $username
      *
-     * @return Request
-     *
+     * @return Client
      */
-    public function setUserName($value)
+    public function setUsername($username)
     {
-        $this->user = $value;
+        $this->username = $username;
 
         return $this;
     }
@@ -221,18 +220,17 @@ class Client
      */
     public function getPassword()
     {
-        return $this->pass;
+        return $this->password;
     }
 
     /**
-     * @param $value
+     * @param string $password
      *
-     * @return Request
-     *
+     * @return Client
      */
-    public function setPassword($value)
+    public function setPassword($password)
     {
-        $this->pass = $value;
+        $this->password = $password;
 
         return $this;
     }
@@ -256,7 +254,7 @@ class Client
     /**
      * @param int $id
      *
-     * @return Request
+     * @return Client
      */
     public function setId($id)
     {
