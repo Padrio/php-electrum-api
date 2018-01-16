@@ -8,6 +8,10 @@
         {
             "name": "Pascal Krason",
             "email": "p.krason@padr.io"
+        },
+        {
+            "name": "epoxa",
+            "email": "epoxa@vvproject.ru"
         }
     ],
     "require": {
