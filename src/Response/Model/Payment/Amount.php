@@ -13,6 +13,11 @@ class Amount
     private $bitcoins = 0;
 
     /**
+     * @var float
+     */
+    private $litecoins = 0;
+
+    /**
      * @var int
      */
     private $satoshis = 0;
@@ -33,6 +38,26 @@ class Amount
     public function setBitcoins($bitcoins)
     {
         $this->bitcoins = $bitcoins;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLitecoins()
+    {
+        return $this->litecoins;
+    }
+
+    /**
+     * @param float $litecoins
+     *
+     * @return Amount
+     */
+    public function setLitecoins($litecoins)
+    {
+        $this->litecoins = $litecoins;
 
         return $this;
     }
