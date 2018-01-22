@@ -154,6 +154,7 @@ class AddRequest extends AbstractMethod implements MethodInterface
     {
         $params = [
             'amount' => $this->getAmount(),
+            'force' => $this->isForced(),
         ];
 
         if($this->getMemo() !== null) {
