@@ -26,13 +26,13 @@ class Client
      * JSONRPC User Name
      * @var string
      */
-    private $username = null;
+    private $rpcUsername = null;
 
     /**
      * JSONRPC Password
      * @var string
      */
-    private $password = null;
+    private $rpcPassword = null;
 
     /**
      * Last Message-ID
@@ -44,21 +44,21 @@ class Client
      * @param string $host
      * @param int    $port
      * @param int    $id
-     * @param string $username
-     * @param string $password
+     * @param null   $rpcUsername
+     * @param null   $rpcPassword
      */
     public function __construct(
         $host = 'http://127.0.0.1',
         $port = 7777,
         $id = 0,
-        $username = null,
-        $password = null
+        $rpcUsername = null,
+        $rpcPassword = null
     ) {
         $this->setHost($host);
         $this->setPort($port);
         $this->setId($id);
-        $this->setUsername($username);
-        $this->setPassword($password);
+        $this->setRpcUsername($rpcUsername);
+        $this->setRpcPassword($rpcPassword);
     }
 
     /**
@@ -133,9 +133,9 @@ class Client
         ]);
 
         // Authorization
-        if ($this->getUsername() && $this->getPassword()) {
+        if ($this->getRpcUsername() && $this->getRpcPassword()) {
             curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-            curl_setopt($curl, CURLOPT_USERPWD, $this->getUsername() . ":" . $this->getPassword());
+            curl_setopt($curl, CURLOPT_USERPWD, $this->getRpcUsername() . ":" . $this->getRpcPassword());
         }
 
         // Execute request & convert data to array
@@ -198,19 +198,19 @@ class Client
     /**
      * @return string
      */
-    public function getUsername()
+    public function getRpcUsername()
     {
-        return $this->username;
+        return $this->rpcUsername;
     }
 
     /**
-     * @param string $username
+     * @param string $rpcUsername
      *
      * @return Client
      */
-    public function setUsername($username)
+    public function setRpcUsername($rpcUsername)
     {
-        $this->username = $username;
+        $this->rpcUsername = $rpcUsername;
 
         return $this;
     }
@@ -218,19 +218,19 @@ class Client
     /**
      * @return string
      */
-    public function getPassword()
+    public function getRpcPassword()
     {
-        return $this->password;
+        return $this->rpcPassword;
     }
 
     /**
-     * @param string $password
+     * @param string $rpcPassword
      *
      * @return Client
      */
-    public function setPassword($password)
+    public function setRpcPassword($rpcPassword)
     {
-        $this->password = $password;
+        $this->rpcPassword = $rpcPassword;
 
         return $this;
     }
