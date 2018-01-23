@@ -3,7 +3,7 @@
     "description": "PHP wrapper for Electrum JSONRPC-API",
     "type": "library",
 	"keywords": ["electrum", "bitcoin", "payment", "jsonrpc", "api"],
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Pascal Krason",
