@@ -19,6 +19,7 @@ class Amount extends Reflection
 
         $namingStrategy = new MapNamingStrategy([
             'amount (BTC)' => 'bitcoins',
+            'amount (LTC)' => 'litecoins',
             'amount' => 'satoshis',
         ]);
 
