@@ -37,7 +37,7 @@ class Broadcast extends AbstractMethod implements MethodInterface
             'tx' => $this->getTransaction()
         ], $optional));
 
-        return isset($data[1]) ? $data[1] : null;
+        return is_array($data) && isset($data[1]) ? $data[1] : $data;
     }
 
     /**
