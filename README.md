@@ -1,3 +1,6 @@
+![Packagist](https://img.shields.io/packagist/dt/padrio/php-electrum-api.svg?color=%234c1)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/padrio/php-electrum-api.svg?color=%234c1)
+
 # php-electrum-api - Electrum library
 ```
 Licence: GPL-3.0
