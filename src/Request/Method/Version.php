@@ -26,6 +26,13 @@ class Version extends AbstractMethod implements MethodInterface
     public function execute(array $optional = [])
     {
         $data = $this->getClient()->execute($this->method, $optional);
+        if(is_string($data)) {
+            $version = new VersionResponse();
+            $version->setVersion($data);
+
+            return $version;
+        }
+
         return $this->hydrate(new VersionResponse(), $data);
     }
 }
