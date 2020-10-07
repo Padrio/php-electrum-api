@@ -23,10 +23,18 @@ class ElectrumResponseException extends Exception
         $message = '';
         $code = 0;
 
-        if (isset($response['error']['message'])) {
+        if (isset($response['error'])) {
+            $text = '';
+            if(is_string($response['error'])) {
+                $text = $response['error'];
+            } elseif (is_array($response['error'])
+                and isset($response['error']['message'])
+                and is_string($response['error']['message'])) {
+                $text = $response['error']['message'];
+            }
             $message = vsprintf(
                 'Electrum API returned error: `%s`',
-                $response['error']['message']
+                $text
             );
         }
 
