@@ -4,7 +4,7 @@ namespace Electrum\Request\Method\Payment;
 
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
-use Electrum\Response\Exception\ElectrumResponseException;
+use Electrum\Response\Model\Payment\PaymentRequest;
 
 /**
  * Return a payment request.
@@ -26,8 +26,7 @@ class Broadcast extends AbstractMethod implements MethodInterface
 
     /**
      * @param array $optional
-     *
-     * @return PaymentRequestResponse|null
+     * @return mixed
      * @throws \Electrum\Request\Exception\BadRequestException
      * @throws \Electrum\Response\Exception\ElectrumResponseException
      */
