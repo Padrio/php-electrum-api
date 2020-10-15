@@ -7,6 +7,10 @@ namespace Electrum\Request\Method\Wallet;
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
 
+/**
+ * Load wallet
+ * @original_author Pascal Krason <p.krason@padr.io>
+ */
 class LoadWallet extends AbstractMethod implements MethodInterface
 {
 

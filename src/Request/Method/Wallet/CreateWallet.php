@@ -6,8 +6,8 @@ use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
 
 /**
- * Return the balance of your wallet
- * @author Pascal Krason <p.krason@padr.io>
+ * Return newly created wallet
+ * @original_author Pascal Krason <p.krason@padr.io>
  */
 class CreateWallet extends AbstractMethod implements MethodInterface
 {

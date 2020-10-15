@@ -7,6 +7,10 @@ namespace Electrum\Request\Method\Wallet;
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
 
+/**
+ * Return all loaded wallets
+ * @original_author Pascal Krason <p.krason@padr.io>
+ */
 class ListWallets extends AbstractMethod implements MethodInterface
 {
 

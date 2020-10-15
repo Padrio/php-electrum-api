@@ -7,6 +7,10 @@ namespace Electrum\Request\Method\Address;
 use Electrum\Request\AbstractMethod;
 use Electrum\Request\MethodInterface;
 
+/**
+ * Generating new address if you need more
+ * @original_author Pascal Krason <p.krason@padr.io>
+ */
 class CreateNewAddress extends AbstractMethod implements MethodInterface
 {
 
