@@ -17,11 +17,11 @@ class AddRequest extends AbstractMethod implements MethodInterface
     /**
      * @var string
      */
-    private $method = 'addrequest';
+    private $method = 'add_request';
 
     /**
      * Bitcoin amount to request
-     * @var int
+     * @var float
      */
     private $amount = 0;
 
@@ -64,7 +64,7 @@ class AddRequest extends AbstractMethod implements MethodInterface
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getAmount()
     {
@@ -72,7 +72,7 @@ class AddRequest extends AbstractMethod implements MethodInterface
     }
 
     /**
-     * @param int $amount
+     * @param float $amount
      *
      * @return AddRequest
      */

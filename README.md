@@ -60,6 +60,58 @@ try {
 $response->getVersion();
 ```
 
+## Create new wallet
+
+Create default wallet:
+```php
+    $client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'user', 'password');
+    $wallet = new \Electrum\Request\Method\Wallet\CreateWallet($client);
+    $response = $wallet->execute();
+```
+
+This code is similar to the command:
+```bash
+$ electrum create
+```
+
+You can also create more wallets with custom names specifying flag of the new wallet. 
+```php
+    $client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'user', 'password');
+    $wallet = new \Electrum\Request\Method\Wallet\CreateWallet($client);
+    $response = $wallet->execute(['wallet_path' => '~/.electrum/wallets/your_wallet']);
+```
+
+This code is similar to the command:
+```bash
+$ electrum create -w ~/.electrum/wallets/your_wallet
+```
+
+Response will be:
+```php
+[
+    'seed' => 'wallet seed',
+    'path' => 'path where wallet file is stored',
+    'msg'  => 'Please keep your seed in a safe place; if you lose it, you will not be able to restore your wallet.',
+];
+```
+
+## Load wallet
+
+```php
+    $client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'user', 'password');
+    $load_wallet = new \Electrum\Request\Method\Wallet\LoadWallet($client);
+    $load_wallet->execute(['wallet_path' => '~/.electrum/wallets/your_wallet']);
+````
+
+## List wallets
+
+Get list of all loaded wallets:
+```php
+    $client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'user', 'password');
+    $list_wallets = new \Electrum\Request\Method\Wallet\ListWallets($client);
+    $list_wallets->execute();
+```
+
 ## Get new address
 ```php
     $client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'user', 'password');
@@ -67,6 +119,15 @@ $response->getVersion();
     $tx     = $wallet->execute();
     echo $tx->getAddress();
 ```
+
+## Create new address for wallet
+
+```php
+    $client = new \Electrum\Client('http://127.0.0.1', 7777, 0, 'user', 'password');
+    $newAddress = new \Electrum\Request\Method\Address\CreateNewAddress($client);
+    $newAddress->execute(['wallet'  => '~/.electrum/wallets/your_wallet']);
+```
+
 
 ## Make a new Payment
 ```php

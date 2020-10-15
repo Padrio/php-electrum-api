@@ -31,19 +31,16 @@ class PayTo extends AbstractMethod implements MethodInterface
 
     /**
      * @param array $optional
-     *
-     * @return PaymentRequestResponse|null
+     * @return mixed
+     * @throws ElectrumResponseException
      * @throws \Electrum\Request\Exception\BadRequestException
-     * @throws \Electrum\Response\Exception\ElectrumResponseException
      */
     public function execute(array $optional = [])
     {
-        $data = $this->getClient()->execute($this->method, array_merge([
+        return $this->getClient()->execute($this->method, array_merge([
             'destination' => $this->getDestination(),
             'amount'      => $this->getAmount()
         ], $optional));
-
-        return $data['hex'];
     }
 
     /**
