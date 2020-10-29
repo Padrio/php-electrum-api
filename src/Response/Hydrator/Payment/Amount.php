@@ -18,9 +18,9 @@ class Amount extends Reflection
         parent::__construct();
 
         $namingStrategy = new MapNamingStrategy([
-            'amount (BTC)' => 'bitcoins',
-            'amount (LTC)' => 'litecoins',
-            'amount' => 'satoshis',
+            'amount_BTC' => 'bitcoins',
+            'amount_LTC' => 'litecoins',
+            'amount_sat' => 'satoshis',
         ]);
 
         $this->setNamingStrategy($namingStrategy);
