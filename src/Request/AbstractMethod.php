@@ -4,8 +4,7 @@ namespace Electrum\Request;
 
 use Electrum\Client;
 use Electrum\Response\ResponseInterface;
-use Zend\Hydrator\Reflection as ReflectionHydrator;
-use Zend\Hydrator\Reflection;
+use Laminas\Hydrator\ReflectionHydrator;
 
 /**
  * @author Pascal Krason <p.krason@padr.io>
@@ -43,15 +42,15 @@ abstract class AbstractMethod
     /**
      * Hydrate returned api data into our custom response models
      *
-     * @param ResponseInterface $object
-     * @param array             $data
-     * @param null              $hydrator
+     * @param ResponseInterface       $object
+     * @param array                   $data
+     * @param ReflectionHydrator|null $hydrator
      *
      * @return ResponseInterface
      */
     public function hydrate(ResponseInterface $object, array $data, $hydrator = null)
     {
-        if(!$hydrator instanceof Reflection) {
+        if(!$hydrator instanceof ReflectionHydrator) {
             $hydrator = new ReflectionHydrator();
         }
 

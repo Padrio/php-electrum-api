@@ -2,13 +2,13 @@
 
 namespace Electrum\Response\Hydrator\Payment;
 
-use Zend\Hydrator\NamingStrategy\MapNamingStrategy;
-use Zend\Hydrator\Reflection;
+use Laminas\Hydrator\NamingStrategy\MapNamingStrategy;
+use Laminas\Hydrator\ReflectionHydrator;
 
 /**
  * @author Pascal Krason <p.krason@padr.io>
  */
-class Amount extends Reflection
+class Amount extends ReflectionHydrator
 {
     /**
      * Initializes a new instance of this class.

@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "zendframework/zend-hydrator": "^2.2"
+        "laminas/laminas-hydrator": "~4.1.0"
     },
 	"autoload": {
 		"psr-4": {
