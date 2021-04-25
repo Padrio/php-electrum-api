@@ -10,15 +10,8 @@ use Electrum\Response\Hydrator\Payment\PaymentRequest as PaymentRequestHydrator;
  */
 class PaymentRequest implements ResponseInterface
 {
-
-    /**
-     *
-     */
     const STATUS_UNPAID = 'Pending';
 
-    /**
-     *
-     */
     const STATUS_EXPIRED = 'Expired';
 
     /**
@@ -26,9 +19,6 @@ class PaymentRequest implements ResponseInterface
      */
     const STATUS_UNKNOWN = 'Unknown';
 
-    /**
-     *
-     */
     const STATUS_PAID = 'Paid';
 
     /**

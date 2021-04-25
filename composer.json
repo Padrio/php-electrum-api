@@ -1,5 +1,5 @@
 {
-    "name": "padrio/php-electrum-api",
+    "name": "uran1980/php-electrum-api",
     "description": "PHP wrapper for Electrum JSONRPC-API",
     "type": "library",
 	"keywords": ["electrum", "bitcoin", "payment", "jsonrpc", "api"],
@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "zendframework/zend-hydrator": "^2.2"
+        "php": "^7.3 || ~8.0.0",
+        "laminas/laminas-hydrator": "~4.1.0"
     },
 	"autoload": {
 		"psr-4": {

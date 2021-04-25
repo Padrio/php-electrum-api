@@ -1,6 +1,7 @@
 # Composer
 /vendor/
 composer.lock
+composer.phar
 
 # IDE
 /.idea
@@ -11,3 +12,4 @@ test.php
 
 # Thanks macOS
 .DS_Store
+/nbproject
