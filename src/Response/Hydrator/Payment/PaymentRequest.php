@@ -18,11 +18,12 @@ class PaymentRequest extends ReflectionHydrator
         $namingStrategy = new MapNamingStrategy([
             'id' => 'id',
             'status' => 'status',
-            'memo' => 'memo',
+            'status_str' => 'status_str',
+            'message' => 'memo',
             'address' => 'address',
             'URI' => 'uri',
-            'exp' => 'expires',
-            'time' => 'time',
+            'expiration' => 'expires',
+            'timestamp' => 'time',
             'confirmations' => 'confirmations',
         ]);
 
