@@ -17,7 +17,7 @@ class GetRequests extends AbstractMethod implements MethodInterface
     /**
      * @var string
      */
-    private $method = 'listrequests';
+    private $method = 'list_requests';
 
     /**
      * @param array $optional
