@@ -15,9 +15,9 @@ class Amount extends ReflectionHydrator
      */
     public function __construct()
     {
-        parent::__construct();
+        //parent::__construct();
 
-        $namingStrategy = new MapNamingStrategy([
+        $namingStrategy = MapNamingStrategy::createFromHydrationMap([
             'amount_BTC' => 'bitcoins',
             'amount_LTC' => 'litecoins',
             'amount_sat' => 'satoshis',
